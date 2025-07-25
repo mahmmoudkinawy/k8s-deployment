@@ -63,7 +63,7 @@ metadata:
 data:
   AUTH_URL: https://app.kinawy.top
   AUTH_URL_INTERNAL: http://webapp-clusterip:3000
-  API_URL: http://gateway-clusterip
+  API_URL: http://gateway-clusterip/
   ID_URL: https://id.kinawy.top
   ID_URL_INTERNAL: http://identity-clusterip
   NOTIFY_URL: https://app.kinawy.top/notifications
