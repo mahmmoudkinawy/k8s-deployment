@@ -7,10 +7,7 @@ async function get(url: string) {
     method: 'GET',
     headers: await getHeaders(),
   };
-  const response = await fetch(
-    new URL(url, baseUrl).toString(),
-    requestOptions
-  );
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
@@ -20,10 +17,7 @@ async function put(url: string, body: unknown) {
     headers: await getHeaders(),
     body: JSON.stringify(body),
   };
-  const response = await fetch(
-    new URL(url, baseUrl).toString(),
-    requestOptions
-  );
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
@@ -33,10 +27,7 @@ async function post(url: string, body: unknown) {
     headers: await getHeaders(),
     body: JSON.stringify(body),
   };
-  const response = await fetch(
-    new URL(url, baseUrl).toString(),
-    requestOptions
-  );
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
@@ -45,10 +36,7 @@ async function del(url: string) {
     method: 'DELETE',
     headers: await getHeaders(),
   };
-  const response = await fetch(
-    new URL(url, baseUrl).toString(),
-    requestOptions
-  );
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
