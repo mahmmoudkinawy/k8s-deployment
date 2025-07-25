@@ -14,6 +14,24 @@ jobs:
           - name: 'kino2001/auction-svc'
             path: 'src/AuctionService'
 
+          - name: 'kino2001/bid-svc'
+            path: 'src/BiddingService'
+
+          - name: 'kino2001/gateway-svc'
+            path: 'src/GatewayService'
+
+          - name: 'kino2001/identity-svc'
+            path: 'src/IdentityService'
+
+          - name: 'kino2001/notify-svc'
+            path: 'src/NotificationService'
+
+          - name: 'kino2001/search-svc'
+            path: 'src/SearchService'
+
+          - name: 'kino2001/webapp'
+            path: 'frontend/web-app'
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
