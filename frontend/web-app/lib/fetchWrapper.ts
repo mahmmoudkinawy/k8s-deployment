@@ -10,7 +10,7 @@ if (!baseUrl) {
 
 console.log('Base URL for API requests:', baseUrl);
 
-const baseUrl2 = `${process.env.API_URL}/`;
+const baseUrl2 = process.env.API_URL + '/';
 
 console.log('Base URL2 for API requests:', baseUrl2);
 
