@@ -18,6 +18,7 @@ metadata:
 data:
   ASPNETCORE_URLS: http://+:80
   AuctionServiceUrl: http://auction-clusterip
+  RabbitMQ__Host: rabbit-clusterip
 ---
 apiVersion: v1
 kind: ConfigMap

@@ -31,7 +31,7 @@ jobs:
           - name: 'kino2001/search-svc'
             path: 'src/SearchService'
 
-          - name: 'kino2001/webapp'
+          - name: 'kino2001/web-app'
             path: 'frontend/web-app'
 
     steps:

@@ -20,6 +20,16 @@ spec:
                 secretKeyRef:
                   name: search-secret
                   key: connString
+            - name: RabbitMQ__USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-secret
+                  key: username
+            - name: RabbitMQ__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-secret
+                  key: password
           ports:
             - containerPort: 80
           envFrom:
