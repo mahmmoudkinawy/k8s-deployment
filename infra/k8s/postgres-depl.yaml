@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: secretKey
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgresdata
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgres-claim
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-np
+spec:
+  selector:
+    app: postgres
+  type: NodePort
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30001
