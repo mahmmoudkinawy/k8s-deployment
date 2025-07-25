@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: webapp-svc
-          image: kino2001/web-app:latest
+          image: kino2001/webapp:latest
           env:
             - name: AUTH_SECRET
               valueFrom:
