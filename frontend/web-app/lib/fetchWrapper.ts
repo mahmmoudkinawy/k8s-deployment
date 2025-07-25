@@ -1,18 +1,6 @@
 import { auth } from '@/auth';
 
-const baseUrl = process.env.API_URL;
-
-if (!baseUrl) {
-  throw new Error(
-    'API_URL is not defined. Please set it in your environment variables.'
-  );
-}
-
-console.log('Base URL for API requests:', baseUrl);
-
-const baseUrl2 = process.env.API_URL + '/';
-
-console.log('Base URL2 for API requests:', baseUrl2);
+const baseUrl = process.env.API_URL + '/';
 
 async function get(url: string) {
   const requestOptions = {
