@@ -2,20 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-svc
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx
   rules:
-    - host: app.carsties.local
+    - host: app.kinawy.top
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: auction-clusterip
+                name: webapp-clusterip
                 port:
-                  number: 80
-    - host: id.carsties.local
+                  number: 3000
+    - host: id.kinawy.top
       http:
         paths:
           - path: /
@@ -25,8 +27,7 @@ spec:
                 name: identity-clusterip
                 port:
                   number: 80
-
-    - host: api.carsties.local
+    - host: api.kinawy.top
       http:
         paths:
           - path: /

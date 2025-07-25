@@ -53,17 +53,17 @@ metadata:
   name: identity-svc-config
 data:
   ASPNETCORE_URLS: http://+:80
-  IssuerUri: http://id.carsties.local
-  ClientApp: http://app.carsties.local
+  IssuerUri: https://id.kinawy.top
+  ClientApp: https://app.kinawy.top
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: webapp-svc-config
 data:
-  AUTH_URL: http://app.carsties.local
+  AUTH_URL: https://app.kinawy.top
   AUTH_URL_INTERNAL: http://webapp-clusterip:3000
   API_URL: http://gateway-clusterip
-  ID_URL: https://id.carsties.local
+  ID_URL: https://id.kinawy.top
   ID_URL_INTERNAL: http://identity-clusterip
-  NOTIFY_URL: http://app.carsties.local/notifications
+  NOTIFY_URL: https://app.kinawy.top/notifications
