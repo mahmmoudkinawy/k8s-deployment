@@ -2,37 +2,53 @@ import { auth } from '@/auth';
 
 const baseUrl = process.env.API_URL;
 
+if (!baseUrl) {
+  throw new Error(
+    'API_URL is not defined. Please set it in your environment variables.'
+  );
+}
+
+console.log('Base URL for API requests:', baseUrl);
+
+const baseUrl2 = `${process.env.API_URL}/`;
+
+console.log('Base URL2 for API requests:', baseUrl2);
+
 async function get(url: string) {
-  const response = await fetch(new URL(url, baseUrl).toString(), {
+  const requestOptions = {
     method: 'GET',
     headers: await getHeaders(),
-  });
+  };
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
 async function put(url: string, body: unknown) {
-  const response = await fetch(new URL(url, baseUrl).toString(), {
+  const requestOptions = {
     method: 'PUT',
     headers: await getHeaders(),
     body: JSON.stringify(body),
-  });
+  };
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
 async function post(url: string, body: unknown) {
-  const response = await fetch(new URL(url, baseUrl).toString(), {
+  const requestOptions = {
     method: 'POST',
     headers: await getHeaders(),
     body: JSON.stringify(body),
-  });
+  };
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
 async function del(url: string) {
-  const response = await fetch(new URL(url, baseUrl).toString(), {
+  const requestOptions = {
     method: 'DELETE',
     headers: await getHeaders(),
-  });
+  };
+  const response = await fetch(baseUrl + url, requestOptions);
   return handleResponse(response);
 }
 
@@ -60,7 +76,7 @@ async function handleResponse(response: Response) {
 async function getHeaders(): Promise<Headers> {
   const session = await auth();
   const headers = new Headers();
-  headers.set('Content-Type', 'application/json');
+  headers.set('Content-type', 'application/json');
   if (session) {
     headers.set('Authorization', 'Bearer ' + session.accessToken);
   }
