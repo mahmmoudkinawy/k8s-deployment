@@ -41,7 +41,7 @@ services:
       - '15672:15672'
       - '5672:5672'
   auction-svc:
-    image: trycatchlearn/auction-svc:latest
+    image: kino2001/auction-svc:latest
     build:
       context: .
       dockerfile: src/AuctionService/Dockerfile
@@ -65,7 +65,7 @@ services:
       rabbitmq:
         condition: service_started
   search-svc:
-    image: trycatchlearn/search-svc:latest
+    image: kino2001/search-svc:latest
     build:
       context: .
       dockerfile: src/SearchService/Dockerfile
@@ -83,7 +83,7 @@ services:
       mongodb:
         condition: service_healthy
   identity-svc:
-    image: trycatchlearn/identity-svc:latest
+    image: kino2001/identity-svc:latest
     build:
       context: .
       dockerfile: src/IdentityService/Dockerfile
@@ -98,7 +98,7 @@ services:
       postgres:
         condition: service_healthy
   gateway-svc:
-    image: trycatchlearn/gateway-svc:latest
+    image: kino2001/gateway-svc:latest
     build:
       context: .
       dockerfile: src/GatewayService/Dockerfile
@@ -108,7 +108,7 @@ services:
       - ClientApp=https://app.carsties.local
       - VIRTUAL_HOST=api.carsties.local
   bid-svc:
-    image: trycatchlearn/bid-svc:latest
+    image: kino2001/bid-svc:latest
     build:
       context: .
       dockerfile: src/BiddingService/Dockerfile
@@ -127,7 +127,7 @@ services:
       mongodb:
         condition: service_healthy
   notify-svc:
-    image: trycatchlearn/notify-svc:latest
+    image: kino2001/notify-svc:latest
     build:
       context: .
       dockerfile: src/NotificationService/Dockerfile
@@ -140,7 +140,7 @@ services:
     depends_on:
       - rabbitmq
   web-app:
-    image: trycatchlearn/web-app:latest
+    image: kino2001/web-app:latest
     build:
       context: .
       dockerfile: frontend/web-app/Dockerfile

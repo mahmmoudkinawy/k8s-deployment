@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: auction-svc
-          image: trycatchlearn/auction-svc:latest
+          image: kino2001/auction-svc:latest
           env:
             - name: ConnectionStrings__DefaultConnection
               valueFrom:

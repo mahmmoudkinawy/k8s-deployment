@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: bid-svc
-          image: trycatchlearn/bid-svc:latest
+          image: kino2001/bid-svc:latest
           env:
             - name: ConnectionStrings__BidDbConnection
               valueFrom:

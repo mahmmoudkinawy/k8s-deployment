@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: webapp-svc
-          image: trycatchlearn/web-app
+          image: kino2001/web-app:latest
           env:
             - name: AUTH_SECRET
               valueFrom:

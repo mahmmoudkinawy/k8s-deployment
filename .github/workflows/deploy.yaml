@@ -69,3 +69,26 @@ jobs:
           file: ${{ matrix.service.path }}/Dockerfile
           push: true
           tags: ${{ matrix.service.name }}:latest
+
+  apply-k8s:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG_DATA }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Set up kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Deploy to Civo K8s
+        run: |
+          kubectl apply -f infra/k8s/ && kubectl apply -f infra/prod-k8s

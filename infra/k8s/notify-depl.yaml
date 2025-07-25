@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: notify-svc
-          image: trycatchlearn/notify-svc:latest
+          image: kino2001/notify-svc:latest
           env:
             - name: RabbitMQ__USERNAME
               valueFrom:
